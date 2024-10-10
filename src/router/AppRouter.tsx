@@ -1,27 +1,14 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-
-
-import { Navbar } from "../ui";
-
-
-import { CustomersPage, CustomerAddPage  } from "../customers";
-
-
+import { Route, Routes } from "react-router-dom"
 import { LoginPage } from "../auth/pages/LoginPage"
+import { ProductsRoutes } from "../products";
 
 export const AppRouter = () => {
   return (
     <>
-      <Navbar />
-
       <Routes>
-        <Route path="customers" element={<CustomersPage />} />
-        <Route path="customer-add" element={<CustomerAddPage />} />
-
-
         <Route path="login" element={<LoginPage />} />
 
-        <Route path="/" element={<Navigate to="/customers" />} />
+        <Route path="/customers" element={<ProductsRoutes />} />
       </Routes>
     </>
 

@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 
 export const Navbar = () => {
+  const navigate = useNavigate();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const onLogOut = () => {
+    navigate('/login', {
+      replace: true
+    })
+  }
 
   return (
 
@@ -28,9 +35,11 @@ export const Navbar = () => {
             Customers
           </NavLink>
 
-          <NavLink to="customers" className="text-white hover:text-gray-400">
+
+          <a className="text-white hover:text-gray-400" onClick={onLogOut}>
             Log Out
-          </NavLink>
+          </a>
+
         </div>
 
         {/* Mobile Menu Icon (Visible on small screens) */}
@@ -50,9 +59,9 @@ export const Navbar = () => {
               Customers
             </NavLink>
 
-            <NavLink to="customers" className="block py-2">
+            <a className="block py-2" onClick={onLogOut}>
               Log Out
-            </NavLink>
+            </a>
           </div>
         )}
 
